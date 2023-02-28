@@ -1,5 +1,5 @@
 # Scientific-Calculator
-**I made a *Scientific Calculator* using *Tkinter*  module in python**
+### **I made a *Scientific Calculator* using *Tkinter*  module in python**
 
 # About
 
