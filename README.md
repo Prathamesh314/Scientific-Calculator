@@ -21,12 +21,12 @@ A Messagebox will appear if you perform any invalid operations like :-
 - Dividing a number by 0
 - Try to change the sign of an expression
 - Giving input to a function which is out of it's range.
--- acos(2) is invalid
--- log (-1) in invalid
+    - acos(2) is invalid
+    - log (-1) in invalid
 
 # Instructions
 
-#### If you want to switch to * Scientific Mode * then follow given steps :-
+#### If you want to switch to *Scientific Mode* then follow given steps :-
 - Navigate your mouse to **Top Left Corner** of your Screen.
 - Click on **File** menu.
 - Click on **Scientific** in File menu.
@@ -39,8 +39,22 @@ A Messagebox will appear if you perform any invalid operations like :-
 
 #### You cannot perform more than one operations at a time
 #### You cannot use *Square Root* function in middle
-> For ex. 3√9 is **Invalid**
-> First Calculate √9 and then multiply the result with 3, this is **Valid**
+- For ex. 3√9 is **Invalid**
+- First Calculate √9 and then multiply the result with 3, this is **Valid**
+
+# Here are Screenshots of How it looks
+
+### Standard Mode
+
+<img src="Images\Screenshot_20230228_130930.png" alt ="Standard Mode">
+
+### How to convert to Scientific Mode
+
+<img src="Images\Screenshot_20230228_130946.png" alt="Convert to Scientific Mode">
+
+### Scientific Mode
+
+<img src="Images\Screenshot_20230228_131003.png" alt="Scientific Mode">
 
 
 
