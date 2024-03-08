@@ -257,6 +257,7 @@ def paste():
 
 
 def scientific_mode():
+    # e1.config(width=36)
     calculator.config(bg = "#76D7C4")
     menubar.config(bg = "#3498DB")
     #pi button
