@@ -31,89 +31,45 @@ def del_last():
     v.set(wrd[:len(wrd)-1])
 
 
-class Calculate:
+def apply_math_func(func, is_rad=False):
+    try:
+        val = float(v.get())
+        if is_rad:
+            val = radians(val)
+        v.set(str(round(func(val), 8)))
+    except (ValueError, TclError):
+        messagebox.showerror("Error", "Invalid Input Provided")
 
-    def __init__(self, n1, n2):
-        self.num1 = n1
-        self.num2 = n2
-        self.result = 0
-
-    def add(self):
-        self.result += round(self.num1+self.num2, 4)
-
-    def sub(self):
-        self.result += round(self.num1 - self.num2, 4)
-
-    def mul(self):
-        self.result += round(self.num1 * self.num2, 4)
-
-    def div(self):
-        try:
-            self.result += round(self.num1 / self.num2, 4)
-        except ZeroDivisionError:
-            messagebox.showerror("Error","Cannot divide by 0")
-
-    def modulo(self):
-        self.result += round(self.num1 % self.num2, 6)
-
-    def power(self):
-        self.result += round(pow(self.num1, self.num2), 6)
+def apply_simple_func(func):
+    try:
+        val = v.get()
+        v.set(func(val))
+    except (ValueError, TclError):
+        messagebox.showerror("Error", "Invalid Input Provided")
 
 def pie():
-    try:
-        val = v.get()
-        v.set(val+str(round(pi, 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_simple_func(lambda val: val + str(round(pi, 8)))
 
 def pie2():
-    try:
-        val = v.get()
-        v.set(val + str(round(2 * pi, 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_simple_func(lambda val: val + str(round(2 * pi, 8)))
 
 def natural_log():
-    try:
-        val = float(v.get())
-        v.set(str(round(log(val, e), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(lambda val: log(val, e))
 
 def log10():
-    try:
-        val = float(v.get())
-        v.set(str(round(log(val, 10), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(lambda val: log(val, 10))
 
 def log2():
-    try:
-        val = float(v.get())
-        v.set(str(round(log(val, 2), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(lambda val: log(val, 2))
 
 def cose():
-    try:
-        deg = float(v.get())
-        v.set(str(round(cos(radians(deg)), 8)))
-    except ValueError:
-        messagebox.showerror("Invalid Input Provided")
+    apply_math_func(cos, is_rad=True)
 
 def coseh():
-    try:
-        deg = float(v.get())
-        v.set(str(round(cosh(radians(deg)), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(cosh, is_rad=True)
 
 def exponent():
-    try:
-        val = float(v.get())
-        v.set(str(round(exp(val))))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(exp)
 
 def factorial():
     try:
@@ -124,111 +80,65 @@ def factorial():
             val -= 1
         v.set(str(ans))
     except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+        messagebox.showerror("Error", "Invalid Input Provided")
 
 def degree():
-    try:
-        val = float(v.get())
-        ans = round((180 * val) / pi, 8)
-        v.set(str(ans))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(lambda val: (180 * val) / pi)
 
 def tangent():
-    try:
-        val = float(v.get())
-        v.set(str(round(tan(radians(val)), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(tan, is_rad=True)
 
 def tangenth():
-    try:
-        val = float(v.get())
-        v.set(str(tanh(radians(val))))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(tanh, is_rad=True)
 
 def inverse():
-    try:
-        val = float(v.get())
-        v.set(str(round(1 / val, 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(lambda val: 1 / val)
 
 def arccos():
-    try:
-        val = float(v.get())
-        v.set(str(round(degrees(acos(val)), 4)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid input provided")
+    apply_math_func(lambda val: degrees(acos(val)))
 
 def sine():
-    try:
-        deg = float(v.get())
-        v.set(str(sinh(deg)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(sin, is_rad=True)
 
 def sineh():
-    try:
-        val = float(v.get())
-        v.set(str(round(sinh(val), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(sinh)
 
 def eee():
-    try:
-        wd = v.get()
-        v.set(wd + str(round(exp(1), 8)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_simple_func(lambda wd: wd + str(round(exp(1), 8)))
 
 def gammaa():
-    try:
-        val = float(v.get())
-        v.set(str(gamma(val)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(gamma)
 
 def asine():
-    try:
-        val = float(v.get())
-        v.set(str(round(degrees(asin(val)), 4)))
-    except ValueError:
-        messagebox.showerror("Error","Invalid Input Provided")
+    apply_math_func(lambda val: degrees(asin(val)))
 #defining operators
 
 
 def result():
     try:
         expr = v.get()
-        res = 0
-        for i in range(len(expr)):
-            if expr[i] in operators:
-                sign = expr[i]
-                num1, num2 = expr.split(sign)
-                # print(int(num1),int(num2))
-                ck = Calculate(float(num1), float(num2))
-                if sign == '+':
-                    ck.add()
-                elif sign == '-':
-                    ck.sub()
-                elif sign == '*':
-                    ck.mul()
-                elif sign == '/':
-                    ck.div()
-                elif sign == '%':
-                    ck.modulo()
-                elif sign == '^':
-                    ck.power()
-                v.set(str(ck.result))
+        # Replace custom symbols with Python equivalents
+        expr = expr.replace('^', '**').replace('√', 'sqrt')
 
-            elif expr[i] == '√':
-                n = float(expr[1:])
-                res += round(sqrt(n), 10)
-                v.set(str(res))
-    except ValueError:
-        messagebox.showinfo("Info","Provide One operation at a time")
+        # Define a safe dictionary of allowed functions and constants
+        safe_dict = {
+            "sqrt": sqrt, "pi": pi, "e": e,
+            "sin": sin, "cos": cos, "tan": tan, "sinh": sinh, "cosh": cosh, "tanh": tanh,
+            "asin": asin, "acos": acos, "atan": atan,
+            "log": log, "log10": log10, "log2": log2,
+            "exp": exp, "gamma": gamma, "degrees": degrees, "radians": radians
+        }
+
+        # Evaluate the expression
+        res = eval(expr, {"__builtins__": None}, safe_dict)
+        v.set(str(round(res, 10)))
+
+    except (SyntaxError, NameError):
+        messagebox.showerror("Error", "Invalid Expression")
+    except ZeroDivisionError:
+        messagebox.showerror("Error", "Cannot divide by zero")
+    except Exception as e:
+        messagebox.showerror("Error", f"An error occurred: {e}")
 
 def change_sign():
     try:
@@ -415,4 +325,3 @@ if __name__=="__main__":
     editmenu.add_command(label="Paste",command=paste)
     calculator.config(menu=menubar)
     calculator.mainloop()
-
